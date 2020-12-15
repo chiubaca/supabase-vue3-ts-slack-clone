@@ -1,4 +1,4 @@
-# Todo example using Supabase, Vue.js & TypeScript
+# Slack Clone using Supabase, Vue.js & TypeScript
 
 - Frontend:
   - Vue 3, TypeScript
