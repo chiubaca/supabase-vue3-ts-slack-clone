@@ -1,6 +1,52 @@
 <template>
-  <div class="flex text-center justify-center align-center p-5">
-    Made with
+  <div class="flex text-center justify-center align-center p-1">
+    Made With
+    <svg
+      class=" ml-2 mr-1"
+      height="25"
+      viewBox="0 0 529 611"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M26.45 372.395C11.8421 372.395 0 360.556 0 345.953C0 340.056 1.9305 334.611 5.194 330.213L15.3806 315.913L246.276 4.14532C248.108 1.63276 251.075 0 254.424 0C259.989 0 264.5 4.50994 264.5 10.0732V11.2065V372.395H26.45Z"
+        fill="#3ECF8E"
+      />
+      <path
+        d="M502.55 237.854C517.158 237.854 529 249.693 529 264.297C529 270.193 527.07 275.638 523.806 280.036L513.619 294.336L282.724 606.104C280.891 608.616 277.925 610.249 274.576 610.249C269.011 610.249 264.5 605.739 264.5 600.176V599.043V237.854H502.55Z"
+        fill="url(#paint0_linear)"
+      />
+      <path
+        d="M502.55 237.854C517.158 237.854 529 249.693 529 264.297C529 270.193 527.07 275.638 523.806 280.036L513.619 294.336L282.724 606.104C280.891 608.616 277.925 610.249 274.576 610.249C269.011 610.249 264.5 605.739 264.5 600.176V599.043V237.854H502.55Z"
+        fill="url(#paint1_linear)"
+        fill-opacity="0.2"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear"
+          x1="264.5"
+          y1="314.891"
+          x2="461.646"
+          y2="391.82"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#249361" />
+          <stop offset="1" stop-color="#3ECF8E" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear"
+          x1="178.852"
+          y1="188.853"
+          x2="277.265"
+          y2="361.218"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop />
+          <stop offset="1" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+    +
     <svg viewBox="0 0 261.76 226.69" height="25" aria-label="Vue">
       <defs />
       <path
@@ -28,6 +74,10 @@
       />
     </svg>
   </div>
+  <span>
+    by
+    <a class="underline" href="https://twitter.com/chiubaca">chiubaca</a></span
+  >
 </template>
 
 <script>
