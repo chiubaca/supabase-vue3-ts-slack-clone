@@ -2,7 +2,6 @@
   <h1 class="">Slack Clone</h1>
   <main class="grid grid-cols-3 grid-row-5 gap-2 h-full w-full ">
     <div id="sidebar" class="col-span-1 row-span-4 border">
-      This is the channels side bar
       <Channels />
     </div>
     <div id="chat" class="col-span-3 row-span-4 border">
@@ -17,10 +16,10 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/camelcase */
 import { defineComponent } from "vue";
-import Channels from "@/components/Channels.vue"
+import Channels from "@/components/Channels.vue";
 export default defineComponent({
   name: "Main",
-  components:{
+  components: {
     Channels
   }
 });
