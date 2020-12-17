@@ -2,7 +2,16 @@
   <h1 class="">Slack Clone</h1>
   <main class="grid grid-cols-3 grid-row-5 gap-2 h-full w-full ">
     <div id="sidebar" class="col-span-1 row-span-4 border">
-      <Channels />
+      <Suspense>
+        <template #default>
+          <div>
+            <Channels />
+          </div>
+        </template>
+        <template #fallback>
+          <Loading />
+        </template>
+      </Suspense>
     </div>
     <div id="chat" class="col-span-3 row-span-4 border">
       conversation happens here
@@ -17,10 +26,12 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { defineComponent } from "vue";
 import Channels from "@/components/Channels.vue";
+import Loading from "@/components/Loading.vue";
 export default defineComponent({
   name: "Main",
   components: {
-    Channels
+    Channels,
+    Loading
   }
 });
 </script>
