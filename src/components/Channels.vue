@@ -1,11 +1,18 @@
 <template>
   <div>
-
-    <ul v-for="(channel, index) in allChannels" :key="index">
-      <li>{{ channel.slug }}</li>
-    </ul>
     <button @click="createChannel" class="btn-black">Add Channel</button>
+    <ul>
+      <li
+        v-for="(channel, index) in allChannels"
+        :key="index"
+        @click="updateCurrentChannel(channel.id)"
+      >
+        <router-link :to="`${channel.id}`"># {{ channel.slug }}</router-link>
+      </li>
+    </ul>
   </div>
+
+  <div>Current Channel: {{ currentChannel }}</div>
 </template>
 
 <script lang="ts">
@@ -14,6 +21,8 @@ import { defineComponent } from "vue";
 import {
   allChannels,
   fetchChannels,
+  currentChannel,
+  updateCurrentChannel,
   createChannel
 } from "@/vuetils/useChannel";
 export default defineComponent({
@@ -21,7 +30,7 @@ export default defineComponent({
   async setup() {
     await fetchChannels();
 
-    return { allChannels, createChannel };
+    return { allChannels, createChannel, currentChannel, updateCurrentChannel };
   }
 });
 </script>
