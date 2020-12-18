@@ -1,8 +1,8 @@
 import { ref } from "vue";
 import { supabase } from "@/lib/supabase";
-import { Session, Provider } from "@supabase/gotrue-js/dist/main/lib/types";
 
 const allChannels = ref<any>([]);
+const currentChannel = ref<number>(1)
 
 async function createChannel() {
   try {
@@ -59,4 +59,10 @@ async function fetchChannels() {
   }
 }
 
-export { allChannels, createChannel, fetchChannels };
+function updateCurrentChannel(channel: number) {
+  console.log("test", channel);
+  currentChannel.value = channel
+  console.log("update channel?",   currentChannel.value);
+}
+
+export { allChannels, currentChannel , updateCurrentChannel, createChannel, fetchChannels };
