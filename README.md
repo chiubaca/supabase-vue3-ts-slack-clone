@@ -1,4 +1,6 @@
-# Slack Clone using Supabase, Vue.js & TypeScript
+# Slack Clone using Supabase, Vue.js & TypeScript [WIP 🚧]
+
+Based off https://github.com/supabase/supabase/tree/master/examples/nextjs-slack-clone
 
 - Frontend:
   - Vue 3, TypeScript
