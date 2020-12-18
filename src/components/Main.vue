@@ -6,6 +6,7 @@
         <template #default>
           <div>
             <Channels />
+            <button @click="handleLogout" class="btn-black">Log Out</button>
           </div>
         </template>
         <template #fallback>
@@ -27,11 +28,17 @@
 import { defineComponent } from "vue";
 import Channels from "@/components/Channels.vue";
 import Loading from "@/components/Loading.vue";
+import { handleLogout } from "@/vuetils/useAuth";
 export default defineComponent({
   name: "Main",
   components: {
     Channels,
     Loading
+  },
+  setup() {
+    return {
+      handleLogout
+    };
   }
 });
 </script>
