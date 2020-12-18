@@ -25,7 +25,7 @@ async function handleLogin(credentials: Credentials) {
       return;
     }
 
-    router.push("/");
+    router.push("/channels/1");
   } catch (error) {
     console.error("Error thrown:", error.message);
     alert(error.error_description || error);
@@ -50,6 +50,7 @@ async function handleSignup(credentials: Credentials) {
       return;
     }
     alert("Signup successful, confirmation mail should be sent soon!");
+    router.push("/channels/1");
   } catch (err) {
     alert("Fatal error signing up");
     console.error("signup error", err);
