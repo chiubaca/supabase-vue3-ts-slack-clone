@@ -4,6 +4,14 @@ import { supabase } from "@/lib/supabase";
 const allChannels = ref<any>([]);
 const currentChannel = ref<number>(1)
 
+const channelListener = supabase
+.from('channels')
+.on('INSERT', (payload) => {
+  console.log("Got new channel", payload.new);
+  allChannels.value.push(payload.new)
+})
+// .subscribe()
+
 async function createChannel() {
   try {
     const channelName = prompt();
@@ -65,4 +73,4 @@ function updateCurrentChannel(channel: number) {
   console.log("update channel?",   currentChannel.value);
 }
 
-export { allChannels, currentChannel , updateCurrentChannel, createChannel, fetchChannels };
+export { allChannels, currentChannel , updateCurrentChannel, createChannel, fetchChannels, channelListener };

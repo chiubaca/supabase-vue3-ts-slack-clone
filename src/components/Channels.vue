@@ -17,17 +17,22 @@
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/camelcase */
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import {
   allChannels,
   fetchChannels,
   currentChannel,
   updateCurrentChannel,
-  createChannel
+  createChannel,
+  channelListener
 } from "@/vuetils/useChannel";
 export default defineComponent({
   name: "Channels",
   async setup() {
+    onMounted(() => {
+      channelListener.subscribe();
+    });
+
     await fetchChannels();
 
     return { allChannels, createChannel, currentChannel, updateCurrentChannel };
