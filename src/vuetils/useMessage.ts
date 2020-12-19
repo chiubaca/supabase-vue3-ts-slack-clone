@@ -27,4 +27,24 @@ async function fetchMessages(channelId: number) {
   }
 }
 
-export { allMessages, fetchMessages, messageListener };
+/**
+ * Insert a new message into the DB
+ * @param {string} message The message text
+ * @param {number} channelId
+ * @param {number} userId The author
+ */
+async function addMessage(message: string, channelId: number, userId: number) {
+  try {
+    const { body } = await supabase
+      .from("messages")
+      .insert([{ 
+        'message':message, 
+        'channel_id': channelId, 
+        'user_id': userId }]);
+    return body;
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
+export { allMessages, fetchMessages, messageListener, addMessage };
