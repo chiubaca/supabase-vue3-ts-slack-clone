@@ -4,7 +4,7 @@
     v-for="(message, index) in allMessages"
     :key="index"
   >
-    <span> {{ message.author.username }}: </span>
+    <span> {{ message['user_id'] }}: </span>
     <span> {{ message.message }} </span>
   </div>
 </template>
