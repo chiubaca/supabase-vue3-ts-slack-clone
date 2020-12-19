@@ -2,14 +2,12 @@ import { ref } from "vue";
 import { supabase } from "@/lib/supabase";
 
 const allChannels = ref<any>([]);
-const currentChannel = ref<number>(1)
+const currentChannel = ref<number>(1);
 
-const channelListener = supabase
-.from('channels')
-.on('INSERT', (payload) => {
+const channelListener = supabase.from("channels").on("INSERT", payload => {
   console.log("Got new channel", payload.new);
-  allChannels.value.push(payload.new)
-})
+  allChannels.value.push(payload.new);
+});
 // .subscribe()
 
 async function createChannel() {
@@ -69,8 +67,15 @@ async function fetchChannels() {
 
 function updateCurrentChannel(channel: number) {
   console.log("test", channel);
-  currentChannel.value = channel
-  console.log("update channel?",   currentChannel.value);
+  currentChannel.value = channel;
+  console.log("update channel?", currentChannel.value);
 }
 
-export { allChannels, currentChannel , updateCurrentChannel, createChannel, fetchChannels, channelListener };
+export {
+  allChannels,
+  currentChannel,
+  updateCurrentChannel,
+  createChannel,
+  fetchChannels,
+  channelListener
+};
