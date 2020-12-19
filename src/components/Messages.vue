@@ -1,5 +1,9 @@
 <template>
-  <div class="flex  flex-col" v-for="(message, index) in allMessages" :key="index">
+  <div
+    class="flex  flex-col"
+    v-for="(message, index) in allMessages"
+    :key="index"
+  >
     <span> {{ message.author.username }}: </span>
     <span> {{ message.message }} </span>
   </div>

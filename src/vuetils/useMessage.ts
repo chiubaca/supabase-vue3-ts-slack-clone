@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { supabase } from "@/lib/supabase";
 
-const allMessages = ref<any>([])
+const allMessages = ref<any>([]);
 
 const messageListener = supabase.from("messages").on("INSERT", payload => {
   console.log("Got new message", payload.new);
@@ -18,7 +18,7 @@ async function fetchMessages(channelId: number) {
       .from("messages")
       .select(`*, author:user_id(*)`)
       .eq("channel_id", channelId)
-      .order('inserted_at');
+      .order("inserted_at");
     // store response to allChannels
     allMessages.value = messages;
     console.log("got messages", allMessages.value);

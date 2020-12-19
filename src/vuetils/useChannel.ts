@@ -67,7 +67,7 @@ async function fetchChannels() {
 function setCurrentChannel(channel: number) {
   currentChannel.value = channel;
   console.log("update channel?", currentChannel.value);
-  localStorage.setItem("channel", String(channel))
+  localStorage.setItem("channel", String(channel));
 }
 
 export {
