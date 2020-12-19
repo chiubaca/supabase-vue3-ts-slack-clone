@@ -27,7 +27,7 @@
       </Suspense>
     </div>
     <div id="input" class="col-span-4 border">
-      <input type="text" placeholder="Type Your Message Here" />
+      <MessageInput />
     </div>
   </main>
 </template>
@@ -37,6 +37,7 @@
 import { defineComponent } from "vue";
 import Channels from "@/components/Channels.vue";
 import Messages from "@/components/Messages.vue";
+import MessageInput from "@/components/MessageInput.vue";
 import Loading from "@/components/Loading.vue";
 import { handleLogout } from "@/vuetils/useAuth";
 export default defineComponent({
@@ -44,6 +45,7 @@ export default defineComponent({
   components: {
     Channels,
     Messages,
+    MessageInput,
     Loading
   },
   setup() {
