@@ -7,14 +7,13 @@ const routes: Array<RouteRecordRaw> = [
     name: "Login/Signup",
     component: () => import("@/components/Auth.vue"),
     beforeEnter: (to, from, next) => {
-      
       // If supabase session is present direct back to channels
-      if(supabase.auth.user()){
-        next("/channels/1")
+      if (supabase.auth.user()) {
+        next("/channels/1");
       }
 
-      console.log("router got session?", supabase.auth.user())
-      next()
+      console.log("router got session?", supabase.auth.user());
+      next();
     }
   },
   {
@@ -23,13 +22,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/components/Main.vue"),
     beforeEnter: (to, from, next) => {
       // redirect to login if no user session is present
-      if(supabase.auth.user() === null){
-        next("/")
+      if (supabase.auth.user() === null) {
+        next("/");
       }
-      next()
+      next();
     }
-
-  },
+  }
 ];
 
 const router = createRouter({
