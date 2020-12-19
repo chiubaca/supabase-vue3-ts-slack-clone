@@ -15,7 +15,16 @@
       </Suspense>
     </div>
     <div id="chat" class="col-span-3 row-span-4 border">
-      conversation happens here
+      <Suspense>
+        <template #default>
+          <div>
+            <Messages />
+          </div>
+        </template>
+        <template #fallback>
+          <Loading />
+        </template>
+      </Suspense>
     </div>
     <div id="input" class="col-span-4 border">
       <input type="text" placeholder="Type Your Message Here" />
@@ -27,12 +36,14 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { defineComponent } from "vue";
 import Channels from "@/components/Channels.vue";
+import Messages from "@/components/Messages.vue";
 import Loading from "@/components/Loading.vue";
 import { handleLogout } from "@/vuetils/useAuth";
 export default defineComponent({
   name: "Main",
   components: {
     Channels,
+    Messages,
     Loading
   },
   setup() {
