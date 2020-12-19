@@ -8,7 +8,6 @@ const channelListener = supabase.from("channels").on("INSERT", payload => {
   console.log("Got new channel", payload.new);
   allChannels.value.push(payload.new);
 });
-// .subscribe()
 
 async function createChannel() {
   try {
@@ -65,16 +64,16 @@ async function fetchChannels() {
   }
 }
 
-function updateCurrentChannel(channel: number) {
-  console.log("test", channel);
+function setCurrentChannel(channel: number) {
   currentChannel.value = channel;
   console.log("update channel?", currentChannel.value);
+  localStorage.setItem("channel", String(channel))
 }
 
 export {
   allChannels,
   currentChannel,
-  updateCurrentChannel,
+  setCurrentChannel,
   createChannel,
   fetchChannels,
   channelListener

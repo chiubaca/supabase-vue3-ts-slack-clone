@@ -5,7 +5,7 @@
       <li
         v-for="(channel, index) in allChannels"
         :key="index"
-        @click="updateCurrentChannel(channel.id)"
+        @click="setCurrentChannel(channel.id)"
       >
         <router-link :to="`${channel.id}`"># {{ channel.slug }}</router-link>
       </li>
@@ -22,7 +22,7 @@ import {
   allChannels,
   fetchChannels,
   currentChannel,
-  updateCurrentChannel,
+  setCurrentChannel,
   createChannel,
   channelListener
 } from "@/vuetils/useChannel";
@@ -35,7 +35,7 @@ export default defineComponent({
 
     await fetchChannels();
 
-    return { allChannels, createChannel, currentChannel, updateCurrentChannel };
+    return { allChannels, createChannel, currentChannel, setCurrentChannel };
   }
 });
 </script>
