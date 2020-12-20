@@ -40,13 +40,13 @@ async function fetchMessages(channelId: number) {
  * @param {number} channelId
  * @param {number} userId The author
  */
-async function addMessage(message: string, channelId: number, userId: number) {
+async function addMessage(message: string, channel_id: number, user_id: number) {
   try {
     const { body } = await supabase.from("messages").insert([
       {
-        "message": message,
-        "channel_id": channelId,
-        "user_id": userId
+        message: message,
+        channel_id,
+        user_id
       }
     ]);
     return body;
