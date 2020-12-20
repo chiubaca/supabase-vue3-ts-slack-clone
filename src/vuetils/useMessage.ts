@@ -1,7 +1,8 @@
 import { ref } from "vue";
 import { supabase } from "@/lib/supabase";
+import { definitions } from "@/types/supabase";
 
-const allMessages = ref<any>([]);
+const allMessages = ref<definitions["messages"][]>([]);
 
 const messageListener = supabase.from("messages").on("INSERT", payload => {
   console.log("Got new message", payload.new);
@@ -35,12 +36,13 @@ async function fetchMessages(channelId: number) {
  */
 async function addMessage(message: string, channelId: number, userId: number) {
   try {
-    const { body } = await supabase
-      .from("messages")
-      .insert([{ 
-        'message':message, 
-        'channel_id': channelId, 
-        'user_id': userId }]);
+    const { body } = await supabase.from("messages").insert([
+      {
+        message: message,
+        channel_id: channelId,
+        user_id: userId
+      }
+    ]);
     return body;
   } catch (error) {
     console.log("error", error);
