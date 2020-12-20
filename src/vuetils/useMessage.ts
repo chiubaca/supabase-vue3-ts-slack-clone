@@ -1,6 +1,6 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { supabase } from "@/lib/supabase";
-import { definitions } from "@/types/supabase"
+import { definitions } from "@/types/supabase";
 
 const allMessages = ref<definitions["messages"][]>([]);
 
@@ -17,20 +17,20 @@ async function fetchMessages(channelId: number) {
   try {
     const { data: messages, error } = await supabase
       .from("messages")
-      .select(`*, author:user_id(*)`)
+      .select(`*`)
       .eq("channel_id", channelId)
       .order("inserted_at");
 
-      // if no messages are returned set an empty array
-      if (messages === null) {
-        allMessages.value = [];
-        return;
-      }
+    // if no messages are returned set an empty array
+    if (messages === null) {
+      allMessages.value = [];
+      return;
+    }
     // store response to allChannels
     allMessages.value = messages;
     console.log("got messages", allMessages.value);
   } catch (error) {
-    console.log("error fetch messages", error);
+    console.error("error fetching messages", error);
   }
 }
 
@@ -42,16 +42,21 @@ async function fetchMessages(channelId: number) {
  */
 async function addMessage(message: string, channelId: number, userId: number) {
   try {
-    const { body } = await supabase
-      .from("messages")
-      .insert([{ 
-        'message':message, 
-        'channel_id': channelId, 
-        'user_id': userId }]);
+    const { body } = await supabase.from("messages").insert([
+      {
+        "message": message,
+        "channel_id": channelId,
+        "user_id": userId
+      }
+    ]);
     return body;
   } catch (error) {
     console.log("error", error);
   }
 }
+
+const messagesAndAuthor = computed(() => {
+  return;
+});
 
 export { allMessages, fetchMessages, messageListener, addMessage };
