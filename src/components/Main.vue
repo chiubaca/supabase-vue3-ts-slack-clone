@@ -1,12 +1,15 @@
 <template>
-  <h1 class="">Slack Clone</h1>
-  <main class="grid grid-cols-3 grid-row-5 gap-2 h-full w-full ">
+  <div class=" flex w-full justify-between p-2">
+    <h1 class="text-lg bold">Supabase-Vue Slack Clone</h1>
+    <button @click="handleLogout" class="underline  right-0">Log Out</button>
+  </div>
+
+  <main class="grid grid-cols-5 grid-row-6 gap-2 h-full w-full ">
     <div id="sidebar" class="col-span-1 row-span-4 border">
       <Suspense>
         <template #default>
           <div>
             <Channels />
-            <button @click="handleLogout" class="btn-black">Log Out</button>
           </div>
         </template>
         <template #fallback>
@@ -26,7 +29,19 @@
         </template>
       </Suspense>
     </div>
-    <div id="input" class="col-span-4 border">
+    <div class="col-span-1 row-span-4 border">
+      <Suspense>
+        <template #default>
+          <div>
+            <Users />
+          </div>
+        </template>
+        <template #fallback>
+          <Loading />
+        </template>
+      </Suspense>
+    </div>
+    <div id="input" class="col-span-6 border">
       <MessageInput />
     </div>
   </main>
@@ -38,6 +53,7 @@ import { defineComponent } from "vue";
 import Channels from "@/components/Channels.vue";
 import Messages from "@/components/Messages.vue";
 import MessageInput from "@/components/MessageInput.vue";
+import Users from "@/components/Users.vue";
 import Loading from "@/components/Loading.vue";
 import { handleLogout } from "@/vuetils/useAuth";
 export default defineComponent({
@@ -46,6 +62,7 @@ export default defineComponent({
     Channels,
     Messages,
     MessageInput,
+    Users,
     Loading
   },
   setup() {
