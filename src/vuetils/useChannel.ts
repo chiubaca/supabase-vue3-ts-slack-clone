@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { supabase } from "@/lib/supabase";
-import { definitions } from "@/types/supabase"
+import { definitions } from "@/types/supabase";
 
 const allChannels = ref<definitions["channels"][]>([]);
 const currentChannel = ref<number>(1);
