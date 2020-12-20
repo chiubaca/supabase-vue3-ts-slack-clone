@@ -5,7 +5,7 @@
   </div>
 
   <main class="grid grid-cols-5 grid-row-6 gap-2 h-full w-full ">
-    <div id="sidebar" class="col-span-1 row-span-4 border">
+    <div id="sidebar" class="col-span-1 row-span-4 border overflow-auto">
       <Suspense>
         <template #default>
           <div>
@@ -17,7 +17,7 @@
         </template>
       </Suspense>
     </div>
-    <div id="chat" class="col-span-3 row-span-4 border">
+    <div id="chat" class="col-span-3 row-span-4 border overflow-auto">
       <Suspense>
         <template #default>
           <div>
@@ -29,7 +29,7 @@
         </template>
       </Suspense>
     </div>
-    <div class="col-span-1 row-span-4 border">
+    <div class="col-span-1 row-span-4 border  overflow-auto">
       <Suspense>
         <template #default>
           <div>
