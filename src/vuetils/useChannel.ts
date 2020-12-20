@@ -1,7 +1,8 @@
 import { ref } from "vue";
 import { supabase } from "@/lib/supabase";
+import { definitions } from "@/types/supabase"
 
-const allChannels = ref<any>([]);
+const allChannels = ref<definitions["channels"][]>([]);
 const currentChannel = ref<number>(1);
 
 const channelListener = supabase.from("channels").on("INSERT", payload => {
@@ -13,13 +14,12 @@ async function createChannel() {
   try {
     const channelName = prompt();
 
-    if (channelName?.length === 0) {
+    // Channel name cant be empty
+    if (channelName?.length === 0 || channelName === null) {
       alert("Enter a name for channel");
       return;
     }
-
-    console.log(channelName);
-    const { data, error } = await supabase
+    const { data: channel, error } = await supabase
       .from("channels")
       .insert({ slug: channelName })
       .single();
@@ -31,7 +31,7 @@ async function createChannel() {
     }
 
     console.log("created a channel");
-    return data;
+    return channel;
   } catch (err) {
     alert("Error");
     console.error("Unknown problem inserting channel to db", err);
@@ -49,7 +49,7 @@ async function fetchChannels() {
       console.log("error", error);
       return;
     }
-    // handle for when no todos are returned
+    // if no channels are returned set an empty array
     if (channels === null) {
       allChannels.value = [];
       return;
