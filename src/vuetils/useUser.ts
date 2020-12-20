@@ -18,11 +18,9 @@ async function fetchUsers() {
       return;
     }
     if (users === null) return;
-    
 
     // console.log("got users", users);
     allUsers.value = new Map(users.map(user => [user.id, user]));
-
   } catch (error) {
     console.error("error fetching users", error);
   }
