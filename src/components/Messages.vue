@@ -4,7 +4,9 @@
     v-for="(message, index) in allMessages"
     :key="index"
   >
-    <span> {{ message["user_id"] }}: </span>
+    <!-- Maps userID to username, could refactor this to be directive  -->
+    <span> {{ allUsers.get(message["user_id"]).username }}: </span>
+
     <span> {{ message.message }} </span>
   </div>
 </template>
@@ -17,6 +19,7 @@ import {
   fetchMessages,
   allMessages
 } from "@/vuetils/useMessage";
+import { allUsers } from "@/vuetils/useUser";
 export default defineComponent({
   name: "Channels",
   async setup() {
@@ -26,7 +29,7 @@ export default defineComponent({
 
     await fetchMessages(1);
 
-    return { allMessages };
+    return { allMessages, allUsers };
   }
 });
 </script>
