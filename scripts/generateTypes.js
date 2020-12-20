@@ -21,7 +21,7 @@ async function main() {
   // const input = JSON.parse(readFileSync("spec.json", "utf8")); // Input can be any JS object (OpenAPI format)
   const output = swaggerToTS(json); // Outputs TypeScript defs as a string (to be parsed, or written to a file)
 
-  fs.writeFile('./src/types/supabase.d.ts', output, function (err) {
+  fs.writeFile("./src/types/supabase.ts", output, function(err) {
     if (err) return console.log(err);
     console.log(output);
   });
