@@ -13,13 +13,14 @@
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/camelcase */
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, watch } from "vue";
 import {
   messageListener,
   fetchMessages,
   allMessages
 } from "@/vuetils/useMessage";
 import { allUsers } from "@/vuetils/useUser";
+import { currentChannel } from "@/vuetils/useChannel";
 export default defineComponent({
   name: "Channels",
   async setup() {
@@ -27,8 +28,15 @@ export default defineComponent({
       messageListener.subscribe();
     });
 
-    await fetchMessages(1);
+    // fetch all messages for selected channel
+    watch(
+      () => currentChannel.value,
+      selectedChannel => {
+        fetchMessages(selectedChannel);
+      }
+    );
 
+    await fetchMessages(currentChannel.value);
     return { allMessages, allUsers };
   }
 });
