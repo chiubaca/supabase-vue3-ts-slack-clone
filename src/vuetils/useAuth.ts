@@ -25,7 +25,7 @@ async function handleLogin(credentials: Credentials) {
       return;
     }
 
-    alert("You've logged in up")
+    alert("Welcome Back")
     console.log("user", user)
 
     router.push("/channels/1");
@@ -95,7 +95,7 @@ async function handleLogout() {
       console.error("Error", error);
       return;
     }
-
+    router.push("/");
     alert("You have signed out!");
   } catch (err) {
     alert("Unknown error signing out");
