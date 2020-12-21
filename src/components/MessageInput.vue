@@ -13,6 +13,7 @@
 import { ref } from "vue";
 import { addMessage } from "@/vuetils/useMessage";
 import { userSession } from "@/vuetils/useAuth";
+import { currentChannel } from "@/vuetils/useChannel";
 
 export default {
   setup() {
@@ -20,7 +21,11 @@ export default {
 
     function send() {
       console.log("sending message", message.value);
-      addMessage(message.value, 1, userSession.value.user.id);
+      addMessage(
+        message.value,
+        currentChannel.value,
+        userSession.value.user.id
+      );
     }
 
     return { message, send };
