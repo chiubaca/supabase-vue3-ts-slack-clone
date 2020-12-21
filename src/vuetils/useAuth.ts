@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import router from "../router";
+import router from "@/router";
 import { supabase } from "@/lib/supabase";
 import { Session, Provider } from "@supabase/gotrue-js/dist/main/lib/types";
 
@@ -25,6 +25,9 @@ async function handleLogin(credentials: Credentials) {
       return;
     }
 
+    alert("You've logged in up")
+    console.log("user", user)
+
     router.push("/channels/1");
   } catch (error) {
     console.error("Error thrown:", error.message);
@@ -43,27 +46,23 @@ async function handleSignup(credentials: Credentials) {
       alert("Please provide both your email and password.");
       return;
     }
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { user, error } = await supabase.auth.signUp({ email, password });
     if (error) {
       alert(error.message);
       console.error(error, error.message);
       return;
     }
-    alert("Signup successful, confirmation mail should be sent soon!");
+
+    alert("You've signed up")
+    console.log("user", user)
+    await supabase.from("users").insert([{id: user?.id, username: user?.email}])
+   
     router.push("/channels/1");
+
   } catch (err) {
     alert("Fatal error signing up");
     console.error("signup error", err);
   }
-}
-
-/**
- * Handles signup via Third Pary Login.
- * https://supabase.io/docs/guides/auth#third-party-logins
- */
-async function handleOAuthLogin(provider: Provider) {
-  const { error } = await supabase.auth.signIn({ provider });
-  if (error) console.error("Error: ", error.message);
 }
 
 /**
@@ -107,7 +106,6 @@ async function handleLogout() {
 export {
   userSession,
   handleLogin,
-  handleOAuthLogin,
   handleSignup,
   handleLogout,
   handlePasswordReset
