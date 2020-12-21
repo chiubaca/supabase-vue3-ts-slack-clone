@@ -2,6 +2,7 @@
   <div class="flex h-full">
     <textarea
       v-model="message"
+      v-on:keyup.enter="send"
       placeholder="Type your message here"
       class=" border  w-full h-full"
     ></textarea>
@@ -26,6 +27,7 @@ export default {
         currentChannel.value,
         userSession.value.user.id
       );
+      message.value = "";
     }
 
     return { message, send };
