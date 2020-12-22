@@ -18,8 +18,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/channels/:id",
-    name: "Main",
-    component: () => import("@/components/Main.vue"),
+    name: "Layout",
+    component: () => import("@/components/Layout.vue"),
     beforeEnter: (to, from, next) => {
       // redirect to login if no user session is present
       if (supabase.auth.user() === null) {
