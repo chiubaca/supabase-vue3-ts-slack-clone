@@ -1,11 +1,10 @@
 <template>
-  <div class=" flex w-full justify-between p-2">
-    <h1 class="text-lg bold">Supabase-Vue Slack Clone</h1>
-    <button @click="handleLogout" class="underline  right-0">Log Out</button>
-  </div>
-
-  <main class="grid grid-cols-5 grid-row-6 gap-2 h-full w-full ">
-    <div id="sidebar" class="col-span-1 row-span-4 border overflow-auto">
+  <main id="layout" class="w-full h-screen">
+    <nav id="nav" class="">
+      <h1 class="text-lg bold">Supabase & Vue Slack Clone</h1>
+      <button @click="handleLogout" class="underline right-0">Log Out</button>
+    </nav>
+    <div id="sidebar" class="border overflow-y-auto">
       <Suspense>
         <template #default>
           <div>
@@ -17,7 +16,7 @@
         </template>
       </Suspense>
     </div>
-    <div id="chat" class="col-span-3 row-span-4 border overflow-auto">
+    <div id="chat" class=" border overflow-y-auto">
       <Suspense>
         <template #default>
           <div>
@@ -29,7 +28,7 @@
         </template>
       </Suspense>
     </div>
-    <div class="col-span-1 row-span-4 border  overflow-auto">
+    <div id="users" class="border overflow-y-auto">
       <Suspense>
         <template #default>
           <div>
@@ -41,9 +40,12 @@
         </template>
       </Suspense>
     </div>
-    <div id="input" class="col-span-6 border">
+    <div id="input" class="border">
       <MessageInput />
     </div>
+    <footer id="footer">
+      <Footer />
+    </footer>
   </main>
 </template>
 
@@ -54,6 +56,7 @@ import Channels from "@/components/Channels.vue";
 import Messages from "@/components/Messages.vue";
 import MessageInput from "@/components/MessageInput.vue";
 import Users from "@/components/Users.vue";
+import Footer from "@/components/Footer.vue";
 import Loading from "@/components/Loading.vue";
 import { handleLogout } from "@/vuetils/useAuth";
 export default defineComponent({
@@ -63,7 +66,8 @@ export default defineComponent({
     Messages,
     MessageInput,
     Users,
-    Loading
+    Loading,
+    Footer
   },
   setup() {
     return {
@@ -72,3 +76,39 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+#layout {
+  display: grid;
+  grid-template:
+    "nav  nav nav" auto
+    "sidebar chat users" 1fr
+    "input input input" auto
+    "footer footer footer" auto
+    / auto 1fr auto;
+}
+
+#nav {
+  grid-area: nav;
+}
+
+#sidebar {
+  grid-area: sidebar;
+}
+
+#chat {
+  grid-area: chat;
+}
+
+#users {
+  grid-area: users;
+}
+
+#input {
+  grid-area: input;
+}
+
+#footer {
+  grid-area: footer;
+}
+</style>
