@@ -17,6 +17,7 @@ import { userSession } from "@/vuetils/useAuth";
 import { currentChannel } from "@/vuetils/useChannel";
 
 export default {
+  name: "MessageInput",
   setup() {
     const message = ref("");
 

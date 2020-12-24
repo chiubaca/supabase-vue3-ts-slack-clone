@@ -22,7 +22,7 @@ import {
 import { allUsers } from "@/vuetils/useUser";
 import { currentChannel } from "@/vuetils/useChannel";
 export default defineComponent({
-  name: "Channels",
+  name: "Messages",
   async setup() {
     onMounted(() => {
       messageListener.subscribe();

@@ -62,7 +62,6 @@ import {
 
 export default defineComponent({
   name: "Auth",
-
   setup() {
     const email = ref("");
     const password = ref("");

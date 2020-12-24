@@ -51,7 +51,7 @@
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/camelcase */
-import { defineComponent } from "vue";
+import { defineComponent, onErrorCaptured } from "vue";
 import Channels from "@/components/Channels.vue";
 import Messages from "@/components/Messages.vue";
 import MessageInput from "@/components/MessageInput.vue";
@@ -60,7 +60,7 @@ import Footer from "@/components/Footer.vue";
 import Loading from "@/components/Loading.vue";
 import { handleLogout } from "@/vuetils/useAuth";
 export default defineComponent({
-  name: "Main",
+  name: "Layout",
   components: {
     Channels,
     Messages,
@@ -70,6 +70,12 @@ export default defineComponent({
     Footer
   },
   setup() {
+    onErrorCaptured(e => {
+      alert("There was an error")
+      console.log(e)
+      return true;
+    });
+
     return {
       handleLogout
     };

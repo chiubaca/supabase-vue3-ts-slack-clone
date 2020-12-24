@@ -12,7 +12,7 @@
 import { defineComponent, onMounted } from "vue";
 import { fetchUsers, userListener, allUsers } from "@/vuetils/useUser";
 export default defineComponent({
-  name: "Channels",
+  name: "Users",
   async setup() {
     onMounted(() => {
       userListener.subscribe();
