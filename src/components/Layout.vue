@@ -78,15 +78,16 @@ export default defineComponent({
 </script>
 
 <style>
+/* css grid code */
 #layout {
   display: grid;
   grid-template:
-    "nav  nav " auto
-    "sidebar chat " 1fr
-    "users chat " 1fr
-    " input input "
-    "footer footer " auto
-    / 1fr 2fr ;
+    " nav nav " auto
+    " sidebar chat " 3fr
+    " users chat " 3fr
+    " input input " 1fr
+    " footer footer " auto
+    / 1fr 3fr;
 }
 
 #nav {
