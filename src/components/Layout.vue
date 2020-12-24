@@ -81,11 +81,12 @@ export default defineComponent({
 #layout {
   display: grid;
   grid-template:
-    "nav  nav nav" auto
-    "sidebar chat users" 1fr
-    "input input input" auto
-    "footer footer footer" auto
-    / auto 1fr auto;
+    "nav  nav " auto
+    "sidebar chat " 1fr
+    "users chat " 1fr
+    " input input "
+    "footer footer " auto
+    / 1fr 2fr ;
 }
 
 #nav {
