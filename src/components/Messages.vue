@@ -19,7 +19,7 @@ import {
   fetchMessages,
   allMessages
 } from "@/vuetils/useMessage";
-import { allUsers } from "@/vuetils/useUser";
+import { fetchUsers, allUsers } from "@/vuetils/useUser";
 import { currentChannel } from "@/vuetils/useChannel";
 export default defineComponent({
   name: "Messages",
@@ -35,7 +35,8 @@ export default defineComponent({
         fetchMessages(selectedChannel);
       }
     );
-
+    // Need users before we can display message as message IDs are mapped to usernames
+    await fetchUsers();
     await fetchMessages(currentChannel.value);
     return { allMessages, allUsers };
   }
